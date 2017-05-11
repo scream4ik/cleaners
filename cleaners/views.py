@@ -9,6 +9,7 @@ from django.views.generic.edit import (
 )
 
 from .models import Cleaner
+from .forms import CleanerCreationForm
 
 
 class CleanerList(ListView):
@@ -22,13 +23,13 @@ class CleanerDetail(DetailView):
 class CleanerCreation(CreateView):
     model = Cleaner
     success_url = reverse_lazy('cleaners:list')
-    fields = ['first_name', 'last_name', 'quality_score']
+    form_class = CleanerCreationForm
 
 
 class CleanerUpdate(UpdateView):
     model = Cleaner
     success_url = reverse_lazy('cleaners:list')
-    fields = ['first_name', 'last_name', 'quality_score']
+    fields = ['first_name', 'last_name', 'quality_score', 'email']
 
 
 class CleanerDelete(DeleteView):

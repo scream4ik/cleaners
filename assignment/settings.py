@@ -42,6 +42,10 @@ INSTALLED_APPS = (
     'customers.apps.CustomersConfig',
     'cleaners.apps.CleanersConfig',
     'main.apps.MainConfig',
+
+    'cities',
+
+    'bootstrap3',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -111,6 +115,8 @@ USE_I18N = True
 USE_L10N = True
 USE_TZ = True
 
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # Update database configuration with $DATABASE_URL.
 db_from_env = dj_database_url.config(conn_max_age=500)
 DATABASES['default'].update(db_from_env)
@@ -128,3 +134,17 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'static'),
 ]
+
+# debug_toolbar
+INTERNAL_IPS = ('127.0.0.1',)
+
+# bootstrap3
+BOOTSTRAP3 = {
+    'required_css_class': 'required',
+    'horizontal_label_class': 'col-md-2',
+    'horizontal_field_class': 'col-md-10',
+}
+
+if DEBUG:
+    INSTALLED_APPS  = list(INSTALLED_APPS) + ['debug_toolbar']
+    MIDDLEWARE_CLASSES = list(MIDDLEWARE_CLASSES) + ['debug_toolbar.middleware.DebugToolbarMiddleware']

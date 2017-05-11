@@ -5,6 +5,14 @@
     <h1>{{ customer.first_name }}</h1>
     <p>Score: <i>{{ customer.quality_score }}</i></p>
     <p>
+        Booking:
+        <ul>
+            {% for item in customer.booking.all %}
+                <li>{% include 'includes/booking_detail.html' %}</li>
+            {% endfor %}
+        </ul>
+    </p>
+    <p>
         <a href="{% url "customers:list" %}">Back</a>
     </p>
 {% endblock content %}

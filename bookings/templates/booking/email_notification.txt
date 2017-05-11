@@ -1,0 +1,4 @@
+Hello.
+New booking:
+ - Customer: {{ booking.customer.first_name }}
+ - Date: {{ booking.date }}

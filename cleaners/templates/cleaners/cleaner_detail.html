@@ -5,6 +5,14 @@
     <h1>{{ cleaner.first_name }}</h1>
     <p>Score: <i>{{ cleaner.quality_score }}</i></p>
     <p>
+        Booking:
+        <ul>
+            {% for item in cleaner.booking.all %}
+                <li>{% include 'includes/booking_detail.html' %}</li>
+            {% endfor %}
+        </ul>
+    </p>
+    <p>
         <a href="{% url "cleaners:list" %}">Back</a>
     </p>
 {% endblock content %}

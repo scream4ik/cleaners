@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Booking</h1>
+
+    <p>
+        <a href="{% url "booking:new" %}">Add a booking</a>
+    </p>
+    <table class="table">
+        <thead>
+          <tr>
+                <th>Customer</th>
+                <th>Cleaner</th>
+                <th>Date</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for item in object_list %}
+                <tr>
+                    <td>{{ item.customer.first_name }}</td>
+                    <td>{{ item.cleaner.first_name }}</td>
+                    <td>{{ item.date }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
